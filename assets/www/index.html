@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<link rel="stylesheet" href="css/jquery.mobile-1.0.1.min.css" />
+<script src="js/jquery-1.6.4.min.js"></script>
+<script src="js/jquery.mobile-1.0.1.min.js"></script>
+<script src="js/cordova-1.5.0.js"></script>
+<script src="js/auxiliares.js"></script>
+<script src="js/main.js"></script>
+<script src="js/PushNotification.js"></script>
+</head>
+
+<body onload="onLoad()">
+
+	<div data-role="page" id="index">
+
+		<div data-role="header">
+			<img class="cabecera" src="images/logo_cabecera.png">
+		</div>
+
+		<div data-role="content">
+			<fieldset class="ui-grid-b">
+				<div class="ui-block-a">
+					<a href="#listadoNoticias" data-transition="slide"><img
+						src="images/btn-noticias.png" width="97%"></a>
+				</div>
+				<div class="ui-block-b">
+					<a href="#listadoFormacion" data-transition="slide"><img
+						src="images/btn-formacion.png" width="97%"></a>
+				</div>
+				<div class="ui-block-c">
+					<a href="#listadoEncuentros" data-transition="slide"><img
+						src="images/btn-encuentros.png" width="97%"></a>
+				</div>
+			</fieldset>
+			<br>
+			<fieldset class="ui-grid-b">
+				<div class="ui-block-a">
+					<a href="#configurador" data-transition="slide"><img
+						src="images/btn-configuracion.png" width="97%"></a>
+				</div>
+			</fieldset>
+		</div>
+
+		<div data-role="footer" style="margin-bottom: 0px;">
+			<a href="tel:902111230" class="telefono"></a>
+		</div>
+
+
+	</div>
+
+	<div data-role="page" id="listadoNoticias">
+
+		<div data-role="header">
+			<a href="#index" data-rel="back"><img src="images/back.png"
+				width="20px;" height="10px"> </a> <img class="cabecera"
+				src="images/logo_cabecera.png">
+		</div>
+
+		<div data-role="content">
+			<h3>&Uacute;ltimas noticias</h3>
+			<div id="status"></div>
+			<select id="provinciaNoticias" data-native-menu="false"
+				onchange="cargaTitularesNoticias(true,true)">
+				<option value='0'>Andaluc&iacute;a</option>
+				<option value='1'>Almer&iacute;a</option>
+				<option value='2'>C&aacute;diz</option>
+				<option value='3'>C&oacute;rdoba</option>
+				<option value='4'>Granada</option>
+				<option value='5'>Huelva</option>
+				<option value='6'>Ja&eacute;n</option>
+				<option value='7'>M&aacute;laga</option>
+				<option value='8'>Sevilla</option>
+			</select>
+			<ul id="linksListNoticias" data-role="listview" data-inset="true"></ul>
+			<input type="button" value="m&aacute;s"
+				onclick="cargaTitularesNoticias(false,false)" />
+		</div>
+
+		<div data-role="footer">
+			<a href="tel:902111230" class="telefono"></a>
+		</div>
+	</div>
+
+	<div data-role="page" id="listadoFormacion">
+
+		<div data-role="header">
+			<a href="#index" data-rel="back"><img src="images/back.png"
+				width="20px;" height="10px"></a> <img class="cabecera"
+				src="images/logo_cabecera.png">
+		</div>
+
+		<div data-role="content">
+			<h3>Pr&oacute;ximos eventos de formaci&oacute;n</h3>
+			<div id="status"></div>
+			<select id="provinciaFormacion" data-native-menu="false"
+				onchange="cargaTitularesFormacion(true,true)">
+				<option value='0'>Andaluc&iacute;a</option>
+				<option value='1'>Almer&iacute;a</option>
+				<option value='2'>C&aacute;diz</option>
+				<option value='3'>C&oacute;rdoba</option>
+				<option value='4'>Granada</option>
+				<option value='5'>Huelva</option>
+				<option value='6'>Ja&eacute;n</option>
+				<option value='7'>M&aacute;laga</option>
+				<option value='8'>Sevilla</option>
+			</select>
+			<ul id="linksListFormacion" data-role="listview" data-inset="true"></ul>
+			<input type="button" value="m&aacute;s"
+				onclick="cargaTitularesFormacion(false,false)" />
+		</div>
+
+		<div data-role="footer">
+			<a href="tel:902111230" class="telefono"></a>
+		</div>
+	</div>
+
+	<div data-role="page" id="listadoEncuentros">
+
+		<div data-role="header">
+			<a href="#index" data-rel="back"><img src="images/back.png"
+				width="20px;" height="10px"></a> <img class="cabecera"
+				src="images/logo_cabecera.png">
+		</div>
+
+		<div data-role="content">
+			<h3>Pr&oacute;ximos encuentros</h3>
+			<div id="status"></div>
+			<select name="provinciaEncuentros" data-native-menu="false"
+				id="provinciaEncuentros"
+				onchange="cargaTitularesEncuentros(true,true)">
+				<option value='0'>Andaluc&iacute;a</option>
+				<option value='1'>Almer&iacute;a</option>
+				<option value='2'>C&aacute;diz</option>
+				<option value='3'>C&oacute;rdoba</option>
+				<option value='4'>Granada</option>
+				<option value='5'>Huelva</option>
+				<option value='6'>Ja&eacute;n</option>
+				<option value='7'>M&aacute;laga</option>
+				<option value='8'>Sevilla</option>
+			</select>
+
+			<ul id="linksListEncuentros" data-role="listview" data-inset="true"></ul>
+			<input type="button" value="m&aacute;s"
+				onclick="cargaTitularesEncuentros(false,false)" />
+		</div>
+
+		<div data-role="footer">
+			<a href="tel:902111230" class="telefono"></a>
+		</div>
+	</div>
+
+	<div data-role="page" id="contentPageNoticias">
+
+		<div data-role="header">
+			<a href="#listadoNoticias" data-rel="back"> <img
+				src="images/back.png" width="20px;" height="10px"></a> <img
+				class="cabecera" src="images/logo_cabecera.png">
+		</div>
+
+		<div data-role="content" id="entryTextNoticias"
+			style="text-align: left;"></div>
+
+		<div data-role="footer">
+			<a href="tel:902111230" class="telefono"></a>
+		</div>
+
+	</div>
+
+	<div data-role="page" id="contentPageFormacion">
+
+		<div data-role="header">
+			<a href="#listadoFormacion" data-rel="back"> <img
+				src="images/back.png" width="20px;" height="10px"></a> <img
+				class="cabecera" src="images/logo_cabecera.png">
+		</div>
+
+		<div data-role="content" id="entryTextFormacion"
+			style="text-align: left;"></div>
+
+		<div data-role="footer">
+			<a href="tel:902111230" class="telefono"></a>
+		</div>
+
+	</div>
+
+	<div data-role="page" id="contentPageEncuentros">
+
+		<div data-role="header">
+			<a href="#listadoEncuentros" data-rel="back"> <img
+				src="images/back.png" width="20px;" height="10px"></a> <img
+				class="cabecera" src="images/logo_cabecera.png">
+		</div>
+
+		<div data-role="content" id="entryTextEncuentros"
+			style="text-align: left;"></div>
+
+		<div data-role="footer">
+			<a href="tel:902111230" class="telefono"></a>
+		</div>
+
+	</div>
+
+
+	<div data-role="page" id="configurador">
+
+		<div data-role="header">
+			<a href="#index" data-rel="back"> <img src="images/back.png"
+				width="20px;" height="10px"></a> <img class="cabecera"
+				src="images/logo_cabecera.png">
+		</div>
+
+		<div data-role="content" id="entryText2" style="text-align: left;">
+
+			<div data-role="fieldcontain">
+				<input type="button" name="btnGuardar" id="btnGuardar"
+					value="Guardar" onclick="guardarConf();" />
+			</div>
+
+			<label for="sliderNotificaciones">Recibir notificaciones:</label> 
+			<select name="sliderNotificaciones" id="sliderNotificaciones" data-role="slider">
+				<option value="off">No</option>
+				<option value="on">S&iacute;</option>
+			</select>
+
+			<div data-role="fieldcontain">
+				<fieldset data-role="controlgroup">
+					<legend>Opciones:</legend>
+					<input type="checkbox" name="sonidos" id="sonidos" class="custom" />
+					<label for="sonidos">Sonido</label>
+					<input type="checkbox" name="vibracion" id="vibracion" class="custom" /> 
+					<label for="vibracion">Vibraci&oacute;n</label>
+				</fieldset>
+			</div>
+
+			<ul data-role="listview" data-inset="true" data-theme="d"
+				data-dividertheme="c">
+				<li data-role="list-divider">Configuración de las notificaciones</li>
+				<li><a href="#confNoticias">Noticas</a></li>
+				<li><a href="#confFormacion">Formación</a></li>
+				<li><a href="#confEncuentros">Encuentros</a></li>
+			</ul>
+			
+			<div data-role="fieldcontain">
+				<fieldset data-role="controlgroup">
+					<legend>Informes de errores:</legend><br>
+					<input type="checkbox" name="errores" id="errores" class="custom" /> 
+					<label for="errores">Acepto enviar posibles informes de errores que se produzcan en la aplicación</label>
+				</fieldset>
+			</div>
+
+			<div data-role="fieldcontain">
+				<input type="button" name="btnGuardar" id="btnGuardar"
+					value="Guardar" onclick="guardarConf();" />
+			</div>
+		</div>
+		
+		<div data-role="footer">
+				<a href="tel:902111230" class="telefono"></a>
+		</div>
+	</div>
+
+	<div data-role="page" id="confNoticias">
+		<div data-role="header">
+			<a href="#configuracion" data-rel="back"> <img
+				src="images/back.png" width="20px;" height="10px"></a> <img
+				class="cabecera" src="images/logo_cabecera.png">
+		</div>
+		
+		<div data-role="fieldcontain">
+		<form id="noticiasForm" action="#" method="post">
+			<fieldset data-role="controlgroup">
+			<h4>Seleccione las provincias de las que desee recibir noticias:</h4>
+			<input type="checkbox" name="noticiaAll" id="noticiaAll" class="custom" />
+			<label for="noticiaAll">Andalucía</label> 
+			<input type="checkbox" name="noticia-1" id="noticia-1" class="custom" /> 
+			<label for="noticia-1">Almería</label> 
+			<input type="checkbox" name="noticia-2" id="noticia-2" class="custom" /> 
+			<label for="noticia-2">Cádiz</label> 
+			<input type="checkbox" name="noticia-3" id="noticia-3" class="custom" /> 
+			<label for="noticia-3">Córdoba</label> 
+			<input type="checkbox" name="noticia-4" id="noticia-4" class="custom" /> 
+			<label for="noticia-4">Granada</label> 
+			<input type="checkbox" name="noticia-5" id="noticia-5" class="custom" /> 
+			<label for="noticia-5">Huelva</label> 
+			<input type="checkbox" name="noticia-6" id="noticia-6" class="custom" /> 
+			<label for="noticia-6">Jaen</label> 
+			<input type="checkbox" name="noticia-7" id="noticia-7" class="custom" /> 
+			<label for="noticia-7">Málaga</label> 
+			<input type="checkbox" name="noticia-8" id="noticia-8" class="custom" /> 
+			<label for="noticia-8">Sevilla</label>
+			</fieldset>
+		</form>
+		</div>
+			<div data-role="footer">
+				<a href="tel:902111230" class="telefono"></a>
+			</div>
+	</div>
+	
+	
+	<div data-role="page" id="confFormacion">
+	
+		<div data-role="header">
+			<a href="#configuracion" data-rel="back"> <img
+				src="images/back.png" width="20px;" height="10px"></a> <img
+				class="cabecera" src="images/logo_cabecera.png">
+		</div>
+		
+		<div data-role="fieldcontain">
+			<fieldset data-role="controlgroup">
+				<h4>Seleccione las provincias de las que desee recibir cursos de formación:</h4>
+				<input type="checkbox" name="curso" id="curso" class="custom" /> 
+					<label for="curso">Andalucía</label> 
+					<input type="checkbox" name="curso-1" id="curso-1" class="custom" />
+					<label for="curso-1">Almería</label>
+					<input type="checkbox" name="curso-2" id="curso-2" class="custom" />
+					<label for="curso-2">Cádiz</label>					
+					<input type="checkbox" name="curso-3" id="curso-3" class="custom" /> 
+					<label for="curso-3">Córdoba</label>
+					<input type="checkbox" name="curso-4" id="curso-4" class="custom" />
+					<label for="curso-4">Granada</label> 
+					<input type="checkbox" name="curso-5" id="curso-5" class="custom" />
+					<label for="curso-5">Huelva</label>
+					<input type="checkbox" name="curso-6" id="curso-6" class="custom" />
+					<label for="curso-6">Jaen</label>					
+					<input type="checkbox" name="curso-7" id="curso-7" class="custom" /> 
+					<label for="curso-7">Málaga</label> 
+					<input type="checkbox" name="curso-8" id="curso-8" class="custom" />
+					<label for="curso-8">Sevilla</label>
+			</fieldset>
+		</div>
+		
+		<div data-role="footer">
+			<a href="tel:902111230" class="telefono"></a>
+		</div>
+	</div>
+	
+	
+	<div data-role="page" id="confEncuentros">
+		
+		<div data-role="header">
+			<a href="#configuracion" data-rel="back"> <img
+				src="images/back.png" width="20px;" height="10px"></a> <img
+				class="cabecera" src="images/logo_cabecera.png">
+		</div>
+		
+		<div data-role="fieldcontain">
+			<fieldset data-role="controlgroup">
+				<h4>Seleccione las provincias de las que desee recibir encuentros:</h4>
+				<input type="checkbox" name="encuentro" id="encuentro" class="custom"/> 
+					<label for="encuentro">Andalucía</label> 
+					<input type="checkbox" name="encuentro-1" id="encuentro-1" class="custom" />
+					<label for="encuentro-1">Almería</label>
+					<input type="checkbox" name="encuentro-2" id="encuentro-2" class="custom" />
+					<label for="encuentro-2">Cádiz</label>					
+					<input type="checkbox" name="encuentro-3" id="encuentro-3" class="custom" /> 
+					<label for="encuentro-3">Córdoba</label>
+					<input type="checkbox" name="encuentro-4" id="encuentro-4" class="custom" />
+					<label for="encuentro-4">Granada</label> 
+					<input type="checkbox" name="encuentro-5" id="encuentro-5" class="custom" />
+					<label for="encuentro-5">Huelva</label>
+					<input type="checkbox" name="encuentro-6" id="encuentro-6" class="custom" />
+					<label for="encuentro-6">Jaen</label>					
+					<input type="checkbox" name="encuentro-7" id="encuentro-7" class="custom" /> 
+					<label for="encuentro-7">Málaga</label> 
+					<input type="checkbox" name="encuentro-8" id="encuentro-8" class="custom" />
+					<label for="encuentro-8">Sevilla</label>
+			</fieldset>
+		</div>
+		
+		<div data-role="footer">
+			<a href="tel:902111230" class="telefono"></a>
+		</div>
+	</div>
+
+</body>
+</html>

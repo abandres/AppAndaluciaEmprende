@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, AppAndaluciaEmprendeActivity!</string>
+    <string name="app_name">Andalucía Emprende</string>
+    <string name="localLogPlace">/data/data/com.ae.app/</string>
+    <string name="urlLog">http://10.244.75.35/comunes/logsapp/procesaaplicacion.php</string>
+</resources>
