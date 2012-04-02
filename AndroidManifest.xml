@@ -13,7 +13,6 @@
         android:resizeable="true"
         android:smallScreens="true" />
 
-    <!--
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -30,8 +29,9 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.BROADCAST_STICKY" />
-    -->
+    
 
+    <!--
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -44,7 +44,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.READ_LOGS" />
-
+-->
     <!-- REQUIRED for C2DM -->
     <!-- Only this application can receive the messages and registration result -->
     <permission
@@ -58,7 +58,7 @@
 
     <application
         android:name=".MainApplication"
-        android:debuggable="true"
+        android:debuggable="false"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" >
         <activity
